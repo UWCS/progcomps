@@ -1,0 +1,24 @@
+name: Generate PDFs
+
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Git repository
+        uses: actions/checkout@v2
+
+      - name: Compile Problems
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            2021-11-24/problems.tex
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2 
+        with:
+          name: PDFs
+          path: |
+            2021-11-24/problems.pdf

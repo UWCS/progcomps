@@ -1,0 +1,56 @@
+\addcontentsline{toc}{subsection}{Persistence}
+\LARGE \textbf{Persistence} \normalsize
+
+The additive persistence of an integer is the smallest number of times you need to repeatedly sum its digits, in order to reduce it to a single digit.
+
+\begin{center}
+    \Huge 586 $\rightarrow$ 19 $\rightarrow$ 10 $\rightarrow$ 1 \normalsize
+\end{center}
+
+
+Given a positive integer, you want to determine the additive persistence of it.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $t$, denoting the number of test cases.
+
+The next $t$ lines of the input consist of a single integer $n$.
+
+\textbf{Constraints}
+
+\begin{itemize}
+    \item $1 \leq l \leq 10^5$
+    \item $1 \leq n \leq 2\cdot 10^9$
+\end{itemize}
+
+\textbf{Output}
+
+$t$ lines each consisting of a single integer, the additive persistence of $n$.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        3 \newline 39 \newline 5 \newline 420 & 
+        2 \newline 0 \newline 1 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The first line of the input specifies there are 3 test cases:
+
+\begin{itemize}
+    \item For the input $39$, we calculate $3 + 9 = 12$, then $1 + 2 = 3$, so we output $2$.
+    \item $5$ is already a single digit, so no digit sums are necessary, we output $0$.
+    \item For $420$ we only calculate $4 + 2 + 0 = 6$, so we output $1$.
+\end{itemize}
