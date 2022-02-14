@@ -1,0 +1,94 @@
+\documentclass[a4paper,12pt,parskip=half-]{scrartcl}
+
+% Packages
+
+\usepackage[english]{babel}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{graphicx}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
+\renewcommand*{\ttdefault}{cmr}
+
+
+\usepackage{wrapfig}
+\usepackage{pmboxdraw}
+\usepackage[most]{tcolorbox}
+
+\graphicspath{{../assets/}}
+\pagestyle{empty}
+\setkomafont{section}{\usefont{T1}{fvs}{b}{n}\Large}
+
+\renewcommand{\ttdefault}{ascii}
+\renewcommand{\arraystretch}{1.5}
+
+\newtcolorbox{exampleinput}[1][]{
+    sharp corners,
+    enhanced,
+    colback=white,
+    attach title to upper,
+    #1
+}
+
+\begin{document}
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+    \vspace{-10pt} % Move shield in line with text
+    \includegraphics[width=0.8\linewidth]{shield.png} % Replace with trophy with dots
+    \vspace{-100pt} % Prevent text below from moving out of the way
+\end{wrapfigure}
+
+\normalfont \Huge \bfseries UWCS Challenge++
+
+\normalfont\Large A friendly programming competition
+\normalsize
+
+\section*{Introduction}
+
+Welcome! 
+Inside this document, you'll find specifications for each the 6 problems used at the event held on 16th February, 2022. Note that in each problem, the number of test cases $t$ is exactly 10000, with inputs of varying difficulties used.
+
+\tableofcontents
+
+\newpage
+
+\addcontentsline{toc}{section}{Problems}
+
+\input{1/problem.tex}
+\newpage
+\input{2/problem.tex}
+\newpage
+\input{3/problem.tex}
+% \newpage
+% \input{4/problem.tex}
+% \newpage
+% \input{5/problem.tex}
+% \newpage
+% \input{6/problem.tex}
+
+% \newpage
+
+% \begin{center}
+%     \Huge \textbf{Ahead be spoilers!} \normalsize
+% \end{center}
+
+% \newpage
+
+% \addcontentsline{toc}{section}{Discussion (Coming Soon)}
+
+% \input{1persistence/discussion.tex}
+% \newpage
+% \input{2pathing/discussion.tex}
+% \newpage
+% \input{3periodic/discussion.tex}
+% \newpage
+% \input{4polynomial/discussion.tex}
+% \newpage
+% \input{5packing/discussion.tex}
+
+\end{document}
