@@ -5,10 +5,12 @@ i = 1
 lines = []
 for _ in range(30000):
     s = input().split()[0]
-    if s.isalpha():
+    if s.isascii() and s.isalpha():
         lines.append(s.upper())
 
 words = [w.upper() for w in lines]
+
+# print(len(lines))
 
 print(10000)
 
