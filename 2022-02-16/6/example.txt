@@ -1,0 +1,16 @@
+2
+2 3
+Istanbul 0
+Constantinople 99
+Istanbul Constantinople 03:45 09:49
+Constantinople Istanbul 11:30 16:43
+Istanbul Constantinople 12:38 17:52
+3 5
+Madrid 0
+Paris 70
+Berlin 160
+Madrid Berlin 00:05 02:04
+Berlin Madrid 01:59 16:48
+Paris Berlin 08:13 09:51
+Paris Madrid 08:13 08:36
+Berlin Paris 09:51 11:17

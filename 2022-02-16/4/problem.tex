@@ -1,0 +1,93 @@
+\addcontentsline{toc}{subsection}{First Move}
+\LARGE \textbf{Problem 4 - First Move} \normalsize
+
+{\itshape A professional game for hardcore sporting fans}
+
+It's the 50th international Tic-Tac-Toe championships, and as head adjudicator, 
+the integrity of the sport rests in your hands alone. 
+You have been alerted to the fact that some players are not following the rules,
+and decide to investigate.
+
+At an international level, the rules have a slight modification. 
+Player X and Player O take turns placing their tiles on an $n$ by $n$ board, 
+with the aim of getting $k$-in-a-row of their tile, horizontally, vertically, or diagonally. 
+Either may start first.
+
+For each game, you need to determine whether the board state could have been legally obtained, 
+and if so, try to determine the player who made the first move.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $t$, denoting the number of test cases.
+
+For each test case:
+
+\begin{itemize}
+    \item The first line consists of two space-separated integers $n$ and $k$.
+    \item The next $n$ lines consist of $n$ characters each, representing the board.
+\end{itemize}
+
+Tiles on the board may be empty (the \texttt{.} character), but could be an \texttt{X} or \texttt{O} instead.
+
+\textbf{Constraints}
+
+\begin{itemize}
+    \item $1 \leq k \leq n \leq 100$
+\end{itemize}
+
+\textbf{Output}
+
+$t$ lines each consisting of one of four possible characters. The character chosen depends on the properties of the $k$-in-a-row board:
+
+\begin{itemize}
+    \item[\texttt{!}] - The board is invalid.
+    \item[\texttt{X}] - Player X must have made the first move.
+    \item[\texttt{O}] - Player O must have made the first move.
+    \item[\texttt{?}] - It is impossible to determine who made the first move.
+\end{itemize}
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+Continued on next page...
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        {\ttfamily 
+        5 \newline 
+        2 2 \newline
+        .X \newline O. \newline
+        3 3 \newline
+        ..X \newline X.X \newline X.O \newline
+        3 3 \newline
+        .XO \newline .XO \newline .XO \newline
+        4 3 \newline 
+        .O.. \newline ..O. \newline X..O \newline ..X. \newline
+        5 3 \newline
+        ..... \newline .XXX. \newline O.X.. \newline .X..O \newline .O.O.
+        } &  
+        {\ttfamily ? \newline ! \newline ! \newline O \newline X} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+There are 5 test cases:
+
+\begin{enumerate}
+    \item Each player has a single tile, so it's impossible to determine who went first.
+    \item Player X has placed too many tiles on the board out of turn.
+    \item It is impossible for both players to win the game.
+    \item Player O made the winning move and has more tiles, so must have gone first.
+    \item Player X made the winning move and has more tiles, so must have gone first.
+\end{enumerate}

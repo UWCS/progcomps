@@ -9,12 +9,10 @@
 \usepackage{graphicx}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 
-\usepackage[defaultfam,tabular,lining]{montserrat}
+\usepackage[defaultfam,tabular]{montserrat}
 \usepackage[scaled]{beramono}
 \usepackage[T1]{fontenc}
-\renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
-\renewcommand*{\ttdefault}{cmr}
-
+% \renewcommand*\oldstylenums[1]{{\fontfamily{Montserrat-TOsF}\selectfont #1}}
 
 \usepackage{wrapfig}
 \usepackage{pmboxdraw}
@@ -24,7 +22,6 @@
 \pagestyle{empty}
 \setkomafont{section}{\usefont{T1}{fvs}{b}{n}\Large}
 
-\renewcommand{\ttdefault}{ascii}
 \renewcommand{\arraystretch}{1.5}
 
 \newtcolorbox{exampleinput}[1][]{
@@ -53,6 +50,8 @@
 Welcome! 
 Inside this document, you'll find specifications for each the 6 problems used at the event held on 16th February, 2022. Note that in each problem, the number of test cases $t$ is exactly 10000, with inputs of varying difficulties used.
 
+\input{setup.tex}
+
 \tableofcontents
 
 \newpage
@@ -64,31 +63,11 @@ Inside this document, you'll find specifications for each the 6 problems used at
 \input{2/problem.tex}
 \newpage
 \input{3/problem.tex}
-% \newpage
-% \input{4/problem.tex}
-% \newpage
-% \input{5/problem.tex}
-% \newpage
-% \input{6/problem.tex}
-
-% \newpage
-
-% \begin{center}
-%     \Huge \textbf{Ahead be spoilers!} \normalsize
-% \end{center}
-
-% \newpage
-
-% \addcontentsline{toc}{section}{Discussion (Coming Soon)}
-
-% \input{1persistence/discussion.tex}
-% \newpage
-% \input{2pathing/discussion.tex}
-% \newpage
-% \input{3periodic/discussion.tex}
-% \newpage
-% \input{4polynomial/discussion.tex}
-% \newpage
-% \input{5packing/discussion.tex}
+\newpage
+\input{4/problem.tex}
+\newpage
+\input{5/problem.tex}
+\newpage
+\input{6/problem.tex}
 
 \end{document}

@@ -1,0 +1,23 @@
+\section*{Setup Instructions}
+
+To participate, you'll need to download a program that sends your solutions to our server to be marked.
+You can download the command-line program from \url{https://github.com/Jlobblet/ProgcompMarker/releases}.
+
+Select the file appropriate to your operating system and architecture.
+On a DCS machine, this is \verb|ProgcompCli-linux-x64.zip|.
+Download the correct file and then extract it\footnote{You can use {\ttfamily unzip} or {\ttfamily tar -xf} for {\ttfamily .zip} and {\ttfamily .tar.xz} files respectively, or a program such as 7zip or WinRAR.}.
+
+Go into the extracted folder.
+Here you will find an executable called \verb|ProgcompCli|\footnote{On Windows, the executable will be called {\ttfamily ProgcompCli.exe}.}.
+Run this executable from the command line (\verb|./ProgcompCli|).
+
+The program will prompt you to perform first-time setup.
+Follow the instructions on-screen, entering \verb|https://progcomp.uwcs.co.uk| for the endpoint.
+
+To run your solution, provide the problem number and an executable to the CLI: \verb|./ProgcompCli [PROBLEM NUMBER] [PATH TO EXECUTABLE]|.
+
+
+\subsection*{Notes}
+
+If you are writing an interpreted language (such as Python), it may be necessary to add a \href{https://en.wikipedia.org/wiki/Shebang_(Unix)}{\em shebang} to the entry point file.
+For example: \verb|#!/usr/bin/env python3| followed by the rest of the Python script as usual.

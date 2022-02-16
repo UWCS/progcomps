@@ -1,0 +1,111 @@
+\addcontentsline{toc}{subsection}{Collision}
+\LARGE \textbf{Problem 6 - Collision} \normalsize
+
+{\itshape Could you imagine the PR disaster if people died?}
+
+As a scheduler for Chad Trains, you've been constantly battling with the finance department. 
+"More trains, more cheaply, more money!", they say. 
+Maybe they don't realise that cutting everything down to a single track wasn't the best idea.
+
+They've sent over the draft timetable for today. 
+If approved, there's a pretty high chance people are going to die when the trains collide.
+Classic finance.
+
+Let's remove the lethal journeys on here, but try to keep finance happy.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $t$, denoting the number of test cases.
+
+For each test case:
+
+\begin{itemize}
+    \item The first line will have two space separated integers $n$ and $m$.
+    \item The next $n$ lines will each contain a space separated string and integer, 
+    \\ representing the station name and distance in km along the track.
+    \item The next $m$ lines will contain space-separated journey information: 
+    \begin{itemize}
+        \item $s_1, s_2$ represent the start and end station names.
+        \item $t_1, t_2$ represent the start and end times in 24h format (such as \texttt{13:48})
+    \end{itemize}
+\end{itemize}
+
+See the example for more inforation.
+
+\textbf{Constraints}
+
+\begin{itemize}
+    \item $2 \leq n \leq 50$
+    \item $1 \leq m \leq 1000$
+    \item $00\text{:}00 \leq t_1 < t_2 \leq 23\text{:}59$  
+\end{itemize}
+
+\textbf{Output}
+
+$t$ lines each consisting of a collection of $j$ space-separated integers, 
+representing the zero-indexed positions of the journeys which will be left operating for the day.
+
+A collision is where two trains overlap at any point of their journey.
+
+You may assume that each train travels at a constant speed.
+
+Note that trains arriving or leaving at the same station at the same time from opposite directions is not counted as a collision.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Scoring}
+
+\begin{itemize}
+    \item $-100$ Points if a schedule results in any collision. Minor PR disaster.
+    \item $1 + 2 + \dots + j$ Points if a schedule is safe.
+\end{itemize}
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+Continued on next page...
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.5\linewidth}|p{0.3\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        2 \newline 
+        2 3 \newline
+        Istanbul 0 \newline
+        Constantinople 99 \newline
+        Istanbul Constantinople 03:45 09:49 \newline
+        Constantinople Istanbul 11:30 16:43 \newline
+        Istanbul Constantinople 12:38 17:52 \newline
+        3 5 \newline 
+        Madrid 0 \newline 
+        Paris 70 \newline 
+        Berlin 160 \newline 
+        Madrid Berlin 00:05 02:04 \newline 
+        Berlin Madrid 01:59 16:48 \newline
+        Paris Berlin 08:13 09:51 \newline
+        Paris Madrid 08:13 08:36 \newline
+        Berlin Paris 09:51 11:17 \newline & 
+        0 1 \newline 0 2 3 4 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+There are two test cases here:
+
+\begin{enumerate}
+    \item The two stations are Istanbul and Constantinople, distance 99km apart. 
+    \\ There are three journeys scheduled. Journey 0 does not overlap any other.
+    Journey 1 and 2 overlap, and so one must be removed.
+    \item The three stations are Madrid, Paris and Berlin.
+    Of the 5 journeys scheduled, only Journey 1 needs to be removed. While journeys 2 and 3 leave the same station at the same time, the trains are travelling in opposite directions.
+\end{enumerate}

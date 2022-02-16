@@ -12,7 +12,7 @@ Suddenly, a flash of inspiration hits:
 
 She gathers the needed materials and sets the process running. 
 It takes an entire two days for each printer to print a new printer (the same model of course), 
-and takes exactly one day to assemble all the newly printed printers.
+and all newly printed printers will be set up and ready to print after a single day.
 What do you do with a new 3D printer? Why, print more printers, of course!
 
 You can assume that, in her bid for global market domination, 
@@ -46,6 +46,8 @@ The next $t$ lines of the input contain two space-separated integers:
 
 $t$ lines each consisting of a single integer, the number of printers after $d$ days.
 
+This will not exceed the maximum value of a 64-bit signed integer.
+
 \vspace{8pt}
 \hrule
 
@@ -57,8 +59,8 @@ $t$ lines each consisting of a single integer, the number of printers after $d$ 
         \hline
         Input & Output \\
         \hline
-        3 \newline 1 9 \newline 4 13 \newline 0 100 & 
-        \text{} \newline 12 \newline 148 \newline 0 \\
+        3 \newline 1 5 \newline 4 13 \newline 0 100 & 
+        \text{} \newline 4 \newline 148 \newline 0 \\
         \hline
     \end{tabular}
 \end{table}
@@ -66,7 +68,7 @@ $t$ lines each consisting of a single integer, the number of printers after $d$ 
 There are 3 test cases:
 
 \begin{enumerate}
-    \item Starting with 1 printer, after 6 days we'll have 4 printers (see \href{https://uwcs.co.uk/media/images/firefox_XuzeaIzMRs.original.png}{image}).
+    \item Starting with 1 printer, after 5 days we'll have 4 printers (see \href{https://uwcs.co.uk/media/images/firefox_XuzeaIzMRs.original.png}{image}).
     \item Starting with 4 printers, after 13 days we'll have 148 printers.
     \item Starting with 0 printers, no matter how many days pass we will still have 0.
 \end{enumerate}

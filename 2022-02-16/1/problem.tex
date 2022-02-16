@@ -5,9 +5,9 @@
 
 For a computer to  automatically check for incorrect spelling, 
 it needs a method to guess which word we were attempting to write.
-One popular way is by using the Levenshtein word metric - and suggestting the words returning the lowest score.
+One popular way is by using the Levenshtein word metric - and suggesting the words returning the lowest score.
 
-Let's make our own word metric! It's called SHIFT, and consists of two operations:
+Let's make our own word metric! It's called SHIFT\footnote{If spoken aloud, note that the F is pronounced silently.}, and consists of two operations:
 
 \begin{enumerate}
     \item Shift a letter a position up or down the alphabet (with wraparound)
@@ -31,8 +31,7 @@ The next $t$ lines of the input consist of two space-separated strings $w_1$ and
 \textbf{Constraints}
 
 \begin{itemize}
-    \item $1 \leq t \leq 10^5$
-    \item $1 \leq |w_1| = |w_2| \leq 50$
+    \item $1 \leq |w_1| = |w_2| \leq 13$
     \item $w_1$ and $w_2$ will be uppercase.
 \end{itemize}
 
