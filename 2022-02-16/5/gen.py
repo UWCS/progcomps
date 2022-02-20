@@ -10,7 +10,7 @@ for _ in range(30000):
 
 words = [w.upper() for w in lines]
 
-print(10000)
+print(1000)
 
 for a in range(4, 14):
     x = list(filter(lambda s: len(s) == a, words))
