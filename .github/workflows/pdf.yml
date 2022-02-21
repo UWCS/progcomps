@@ -14,12 +14,14 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
-            2021-11-24/problems.tex
+            2021-11-24/21_11_24_problems.tex
+            2022-02-16/22_02_16_problems.tex
           work_in_root_file_dir: true
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2 
         with:
-          name: PDFs
+          name: UWCS Programming Problem Sets
           path: |
-            2021-11-24/problems.pdf
+            2021-11-24/21_11_24_problems.pdf
+            2022-02-16/22_02_16_problems.pdf
