@@ -10,7 +10,6 @@ t = int(input())
 
 for _ in range(t):
     start, end = input().split()
-    # calculate distance between individual letters
 
     dists = []
     for i in range(len(start)):
