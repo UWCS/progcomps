@@ -1,25 +1,34 @@
-\section*{Setup Instructions}
+\section*{Setup}
 
-To participate, you'll need to download a program that sends your solutions to our server to be marked.
-You can download the command-line program from \url{https://github.com/Jlobblet/ProgcompMarker/releases}.
+To take part, you'll need to download a program we made to interact with your script. 
+It will send input data, recieve the output data, and give back a mark or score.
 
-Select the file appropriate to your operating system and architecture.
-On a DCS machine, this is \verb|ProgcompCli-linux-x64.zip|.
-Download the correct file and then extract it\footnote{You can use {\ttfamily unzip} or {\ttfamily tar -xf} for {\ttfamily .zip} and {\ttfamily .tar.xz} files respectively, or a program such as 7zip or WinRAR.}.
+Donwload the ProgcompCLI here: \url{https://github.com/Jlobblet/ProgcompMarker/releases}
 
-Go into the extracted folder.
-Here you will find an executable called \verb|ProgcompCli|\footnote{On Windows, the executable will be called {\ttfamily ProgcompCli.exe}.}.
-Run this executable from the command line (\verb|./ProgcompCli|).
+Select the download that's appropriate to your operating system and architecture. 
+On a DCS machine, this would be \texttt{linux-x64}. 
+On most Windows machines, this is likely \texttt{win-64}. 
+You can choose whether to download it as a zip file (or tarball), which you'll need to extract.
 
-The program will prompt you to perform first-time setup.
-Follow the instructions on-screen, entering \verb|https://progcomp.uwcs.co.uk| for the endpoint.
+In the extracted folder, you'll find an exectuable called \texttt{ProgcompCli}. 
+This will have the \texttt{.exe} extension if you're on windows. Run it from the command line with no arguments.
 
-To run your solution, provide the problem number and an executable to the CLI: \verb|./ProgcompCli [PROBLEM NUMBER] [PATH TO EXECUTABLE]|.
+You should now be prompted for first-time setup. Enter \texttt{https://progcomp.uwcs.co.uk} for the endpoint, and pick a username which you think will identify you.
 
+\subsection*{Using the ProgcompCLI}
 
-\subsection*{Notes}
+To submit a solution, you'll need to provide at least two arguments: the problem number in this document such as \circled{0}, and the path to the executable script you made to solve it.
 
-If you are writing an interpreted language (such as Python), it may be necessary to add a \href{https://en.wikipedia.org/wiki/Shebang_(Unix)}{\em shebang} to the entry point file.
-For example: \verb|#!/usr/bin/env python3| followed by the rest of the Python script as usual.
+By default, data will be sent from the server via standard input (\texttt{stdin}), and your standard output (\texttt{stdout}) will be redirected to the server to be marked.
+However, this can be changed! Check out the command options for more details.
 
-Once set up, you can attempt Problem 0 - this is just to read in an input line, and then send it back.
+If your language can directly output an executable, then you should be able to pass it as the argument.
+However, most languages do not do this by default.
+
+\texttt{./ProgcompCli 0 Solution.exe}
+
+If you're using an interpreted language and a UNIX-based system (Mac, Linux), you might want to add a \href{https://en.wikipedia.org/wiki/Shebang_(Unix)}{\em shebang} as the first line of your script, allowing it to be executed without any arguments.
+For Python, this is likely to be \verb|#!/usr/bin/env python|. 
+Otherwise, use the \texttt{executable-args} flag to pass in multiple arguments. Here is a Windows Java example:
+
+\texttt{.\textbackslash ProgcompCli.exe 0 java -{}-executable-args Solution}
