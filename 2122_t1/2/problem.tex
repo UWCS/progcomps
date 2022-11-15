@@ -1,0 +1,63 @@
+\addcontentsline{toc}{subsection}{Pathing}
+\LARGE \textbf{Problem 2 - Pathing} \normalsize
+
+RON needs to find their way to the ballot box, to vote in the SU elections!
+They know their way around campus, so from any starting square can always take the fastest available route to the square with the ballot box.
+
+But RON is a robot; they can only move horizontally or vertically between squares.
+It's also been raining recently, and two of the squares are now covered in deadly dihydrogen monoxide \dots
+RON will short-circuit the second they step on one! 
+
+How many moves will RON need to make in order to vote?
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $t$, denoting the number of test cases.
+
+The $t$ remaining lines of the input contain 8 space-separated integers:
+\begin{itemize}
+    \item The first pair represents RON's starting coordinates $(s_x, s_y)$.
+    \item The next pair represents the coordinates of the ballot box $(f_x, f_y)$.
+    \item The final two pairs represent the coordinates of the deadly tiles $(a_x, a_y), (b_x, b_y)$.
+\end{itemize}
+
+\textbf{Constraints}
+
+\begin{itemize}
+    \item The $x$ and $y$ components of each coordinate will be between $0$ and $10^9$.
+    \item Note that RON may still travel outside of these coordinate bounds.
+\end{itemize}
+
+\textbf{Output}
+
+Each of the $t$ output lines should consist of a single integer, 
+representing the number of times RON needs to move between sqaures in order to reach the ballot box.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        4 \newline 0 0 2 2 0 2 2 0 \newline 0 0 2 2 0 1 1 0 \newline 1 1 1 1 0 1 1 0 \newline 0 0 0 2 0 1 1 2 & 
+        4 \newline 6 \newline 0 \newline 4 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+There are 4 test cases:
+
+\begin{enumerate}
+    \item There is an unobstructed shortest path from $(0, 0)$ to $(2, 2)$, we move 4 squares.
+    \item We are obstructed by $(0, 1)$ and $(1, 0)$, so go around and move 6 squares.
+    \item We are already at our destination without needing to move.
+    \item We take the shortest detour around the tiles, which requires 4 moves.
+\end{enumerate}

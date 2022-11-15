@@ -1,0 +1,103 @@
+\addcontentsline{toc}{subsection}{My Server Rules}
+\LARGE \circled{3} \textbf{My Server Rules} \normalsize
+
+{\itshape How am I even meant to follow these?}
+
+As an assistant to the supreme leader of a newly created Discord server, you have been tasked with enforcing the rules with an iron fist.
+Unfortunately for you, your wise and benevolent leader got a little bit carried away while writing them. 
+Not only are there a ridiculous number of rules, but it looks like the ultimate authority on this extremely small corner of the internet likes changing their mind - some contradict or negate each other!
+
+You need to figure out which rules are actually in effect, and remove any redundancies.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases. \\
+There will then be $n$ of the following:
+\begin{itemize}
+    \item A line containing a single integer $k$, the number of rules.
+    \item $k$ lines consisting of two space-separated variables. 
+    Firstly, a unique integer $1 \leq i \leq k$.
+    Secondly, a string $r_i$ describing the rule. There are three types of rules:
+    \begin{itemize}
+        \item (Ignore) The format \texttt{ignore rule }$j$, for some $1 \leq j \leq k$.
+        \item (Negative) The format \texttt{don't }$r'$, where $r'$ is in the form of a Positive rule.
+        \item (Positive) Any other format.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^3 \qquad 
+    1 \leq k \leq 10^5 \qquad 
+    1 \leq |r_k| \leq 100
+\end{equation*}
+
+\textbf{Output}
+
+$n$ lines of space-separated integers in \textit{any} order, the rules in force after this procedure:
+\begin{enumerate}
+    \item Apply Ignore rules, which prevent another rule from taking effect.
+    \item Merge duplicate rules, but keep the lowest rule number between the copies.
+    \item Delete the Positive and Negative rules which contradict each other.
+    \item Wipe away any collection of rules creating a logical paradox.
+\end{enumerate}
+Earlier steps in the procedure take priority over later ones, where multiple can be applied.
+If after applying the procedure, no rules remain, write the output line \texttt{"No Rules"} instead.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+Continued on next page \dots
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        4 
+        \newline \textbf{3}
+        \newline 1 touch grass
+        \newline 2 don't touch grass
+        \newline 3 ignore rule 2
+        \newline \textbf{3}
+        \newline 1 don't bow to our supreme leader
+        \newline 2 bow to our supreme leader
+        \newline 3 don't bow to our supreme leader
+        \newline \textbf{5}
+        \newline 1 ignore rule 4
+        \newline 2 don't spam
+        \newline 3 don't post cringe
+        \newline 4 ignore rule 2
+        \newline 5 have a brain
+        \newline \textbf{5} 
+        \newline 1 ignore rule 3
+        \newline 2 don't put memes in general
+        \newline 3 ignore rule 1
+        \newline 4 ignore rule 4
+        \newline 5 don't put memes in general
+        &  
+        1 \newline No Rules \newline 3 5 2 \newline 2 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Let's walk through these four test cases:
+
+\begin{enumerate}
+    \item Rules 1 and 2 contradict, but rule 2 is first ignored by rule 3, which then disappears. Therefore, only rule 1 is necessary.
+    \item Rules 1 and 3 are merged, but we keep the number 1. Then rules 1 and 2 contradict, so there are none remaining.
+    \item Rule 4 ignores rule 2, but rule 1 ignores rule 4, so rules 2, 3, 5 are in effect.
+    They can be output in any order.
+    \item Rule 1 and 3 together create a logical paradox. 
+    Rule 4 creates a paradox with itself.
+    Rules 2 and 5 are merged into rule 2, and this is the only rule remaining.
+    
+\end{enumerate}

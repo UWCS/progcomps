@@ -1,0 +1,74 @@
+\addcontentsline{toc}{subsection}{Printing}
+\LARGE \textbf{Problem 2 - Printing} \normalsize
+
+{\itshape I wish it worked like this in real life}
+
+Alexa has some 3D printers, but isn't sure what to do with them at the moment.
+Suddenly, a flash of inspiration hits:
+
+\begin{center}
+    \textit{What if I printed more 3D printers with my 3D printer?}
+\end{center}
+
+She gathers the needed materials and sets the process running. 
+It takes an entire two days for each printer to print a new printer (the same model of course), 
+and all newly printed printers will be set up and ready to print after a single day.
+What do you do with a new 3D printer? Why, print more printers, of course!
+
+You can assume that, in her bid for global market domination, 
+Alexa always has the resources to build and maintain these printers, 
+and that as soon as a printer finishes printing, it's immediately set to print again. 
+Machines don't get days off.
+
+It's your job to track the total number of printers on a given day.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $t$, denoting the number of test cases.
+
+The next $t$ lines of the input contain two space-separated integers:
+\begin{itemize}
+    \item The first is $p$, the number of printers Alexa starts with.
+    \item The second is $d$, the number of days Alexa lets the printing process run for.
+\end{itemize}
+
+\textbf{Constraints}
+
+\begin{itemize}
+    \item $0 \leq p \leq 10^4$
+    \item $0 \leq d \leq 100$
+\end{itemize}
+
+\textbf{Output}
+
+$t$ lines each consisting of a single integer, the number of printers after $d$ days.
+
+This will not exceed the maximum value of a 64-bit signed integer.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        3 \newline 1 5 \newline 4 13 \newline 0 100 & 
+        \text{} \newline 4 \newline 148 \newline 0 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+There are 3 test cases:
+
+\begin{enumerate}
+    \item Starting with 1 printer, after 5 days we'll have 4 printers (see \href{https://uwcs.co.uk/media/images/firefox_XuzeaIzMRs.original.png}{image}).
+    \item Starting with 4 printers, after 13 days we'll have 148 printers.
+    \item Starting with 0 printers, no matter how many days pass we will still have 0.
+\end{enumerate}

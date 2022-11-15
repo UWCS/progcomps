@@ -1,0 +1,21 @@
+4
+3
+1 touch grass
+2 don't touch grass
+3 ignore rule 2
+3
+1 don't bow to our supreme leader
+2 bow to our supreme leader
+3 don't bow to our supreme leader
+5
+1 ignore rule 4
+2 don't spam
+3 don't post cringe
+4 ignore rule 2
+5 have a brain
+5
+1 ignore rule 3
+2 don't put memes in general
+3 ignore rule 1
+4 ignore rule 4
+5 don't put memes in general

@@ -1,0 +1,100 @@
+\addcontentsline{toc}{subsection}{Catch My Drift}
+\LARGE \circled{4} \textbf{Catch My Drift} \normalsize
+
+{\itshape Slowly drifting\dots}
+
+In the real world, clocks aren't perfect. 
+Not even digital ones!
+They're going to be either a tiny bit slower or faster than the globally agreed upon time, known as a drift rate.
+Internal computer networks that consist of multiple devices may need to log events in the correct order, meaning each device's clock time needs to be close to the others.
+
+We call a collection of clocks are '$\delta$-synchronised' if, for each pair of clocks in the collection, the difference between their times is $\leq \delta$.
+Over time, the drift rate could cause this condition to fail - with the clocks needing re-synchronisation to remain accurate.
+
+Given a collection of clocks (both time and drift rate), determine the number of seconds until they are no longer $\delta$-syncronised.
+Assume each clock has a constant drift rate: the difference between a simulated clock second and real second.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases. \\
+There will then be $n$ of the following:
+\begin{itemize}
+    \item A line containing two space-separated integers:
+    \begin{itemize}
+        \item $\delta$, an integer representing the synchronisation threshold in milliseconds.
+        \item $c$, an integer representing the number of clocks that need to be well-syncronised.
+    \end{itemize}
+    \item $c$ lines, each consisting of two space-separated integers representing clock $i$:
+    \begin{itemize}
+        \item $t_i$ is an integer representing the unix time of clock $i$ to the nearest millisecond.
+        \item $\rho_i$ is an integer representing the drift rate of clock $i$ in milliseconds.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^2 \qquad 
+    0 \leq \delta \leq 10^6 \qquad
+    2 \leq c \leq 10^6 \qquad
+    \forall i \in \{1, \dots, c\} \quad
+    0 \leq t_i \leq 10\delta \qquad
+    |\rho_i| \leq 2\delta
+\end{equation*}
+
+\textbf{Output}
+
+$n$ lines each consisting of a single integer, the number of seconds it took for the clocks to no longer be $\delta$-synchronised.
+If this occurs in-between two seconds, round up. If this will never occur with the current collection of clocks, output \texttt{-1}.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+Continued on next page \dots
+
+\newpage
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        4 
+        \newline \textbf{20 2}
+        \newline 2 4
+        \newline 19 6
+        \newline \textbf{500 3} 
+        \newline 1000 50 
+        \newline 1500 -5 
+        \newline 1100 -30 
+        \newline \textbf{50 2} 
+        \newline 100 -5 
+        \newline 120 -5 
+        \newline \textbf{2000 3} 
+        \newline 3500 700
+        \newline 6000 -500
+        \newline 5000 0
+        &  
+        2 \newline 5 \newline -1 \newline 0 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Let's walk through these four test cases:
+
+\begin{enumerate}
+    \item At the start, the two clocks are 17 milliseconds apart from each other. 
+    The difference between their drift rates is 2ms, so the time difference will increase to 19ms after one second, and 21ms after two seconds - exceeding the threshold.
+    We output 2.
+    \item At the start, the first two clocks are on the very edge of the 500ms threshold. 
+    However, they then begin to drift towards each other.
+    Clocks two and three actually cause the syncronisation to break down, after 5 seconds they are 525ms apart.
+    \item These clocks have the same drift rate, and will never drift apart. We output -1.
+    \item The first two clocks are already 2500ms apart, so we output 0.
+    
+\end{enumerate}

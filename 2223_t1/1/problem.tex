@@ -1,0 +1,82 @@
+\addcontentsline{toc}{subsection}{Problem Won}
+\LARGE \circled{1} \textbf{Problem Won} \normalsize
+
+{\itshape Are you the quiz champion?}
+
+The Computing Society has had enough. 
+Tired of marking all our quiz nights by hand, we've come up with a brilliant new strategy - creating a bespoke scoring application from scratch! 
+Excel? 
+Google Sheets? 
+Never heard of it.
+It simultaneously uses 50 conflicting web development frameworks for maximum customisability. 
+But in our haste, we forgot to implement the scoring part.
+Fancy helping out?
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Name} & Round 1 & Round 2 & Round 3 & Round 4 & \textbf{Rounds Won} \\
+        \hline
+        Alice & 8 & 4 & 1 & \cellcolor{cyan}9 & 1\\
+        Bob & \cellcolor{cyan}9 & 4 & \cellcolor{cyan}2 & 3 & \cellcolor{yellow}2 \\
+        Charlie & 7 & \cellcolor{cyan}10 & 0 & 5 & 1 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+As you can see by the example quiz above, we just want to find out which player won the most rounds in the quiz, 
+assuming only one player gets the highest score each round.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains two space-separated integers $p$ and $r$ 
+- denoting the number of players and number of quiz rounds respectively.
+
+The next $p$ input lines consist of the following space-separated info about each player:
+\begin{itemize}
+    \item $n$, the player's name
+    \item $r$ integers ($s_1, s_2, \dots, s_r$) representing the player's score for each round.
+\end{itemize}
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq p \leq 10^3 \qquad 
+    1 \leq r \leq 10^4 \qquad 
+    1 \leq |n| \leq 11 \qquad 
+    \forall i \in \{1, \dots, r\} \quad 0 \leq s_i \leq 10^2
+\end{equation*}
+
+Players' names and \textbf{total score}, along with each round's highest score, are always unique.
+
+\textbf{Output}
+
+A single line, containing the name of the player who won the quiz:
+the person who won the most rounds!
+If multiple players have won the same number of rounds, 
+then the tie is broken by the player with the \textit{highest total score} over the course of the quiz.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        \textbf{3 5} \newline John 100 5 0 7 4 \newline Barry 63 100 0 6 5 \newline Karen 0 9 1 6 9 & 
+        John \\
+        \hline
+    \end{tabular}
+\end{table}
+
+In this example, there are 3 players and 5 rounds in the quiz.
+John wins round 1 and round 4. Barry wins round 2. Karen wins round 3 and round 5.
+Both John and Karen are tied on the number of rounds won, so we look at their total scores.
+John has a total score of 116 compared to Karen's 25, so wins overall. We output John.
