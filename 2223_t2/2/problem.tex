@@ -1,0 +1,139 @@
+\togglefalse{IsScore}
+\problem{2}{Industry Standard}{Keegan R}
+{Job Requirements: 10 years experience in UWPL}
+
+I know what you're thinking. You're sick of all these dumb, annoying, overengineered programming languages, aren't you?
+Pointers? Classes? Types? Functions? Conditions? Too complicated.
+That's why we're developing the tool to drive future innovation - UWPL.
+
+The philosophy of UWPL is minimality. We ensure this with the two principles:
+\begin{enumerate}
+    \item \textit{"Control Variability"} -
+    The integer is all.
+    All begins at zero.
+    All begins nameless.
+    
+    \item \textit{"Control Complexity"} - 
+    We increment, and we repeat.
+    That is all.
+\end{enumerate}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l p{3cm} l}
+        \Huge \texttt{eggs\textcolor{uwcsblue}{++}} & & \Huge \texttt{\textcolor{uwcsred}{repeat} 3} \\
+        \Huge \texttt{flour\textcolor{uwcsblue}{++}} & & \Huge \texttt{\textcolor{uwcsred}{$\lbrace$}} \\
+        \Huge \texttt{sugar\textcolor{uwcsblue}{++}} & & \Huge \texttt{apples\textcolor{uwcsblue}{++}} \\
+        \Huge \texttt{flour\textcolor{uwcsblue}{++}} & & \Huge \texttt{apples\textcolor{uwcsblue}{++}} \\
+        \Huge \texttt{eggs\textcolor{uwcsblue}{++}} & & \Huge \texttt{olives\textcolor{uwcsblue}{++}} \\
+        \Huge \texttt{flour\textcolor{uwcsblue}{++}} & & \Huge \texttt{\textcolor{uwcsred}{$\rbrace$}} \\
+    \end{tabular}
+    \caption*{Examples of UWPL scripts. Elegant, aren't they?}
+\end{table}
+
+At the end of each program, the non-zero variable values should be output.
+Unfortunately, UWPL has not yet been widely adopted - so you'll need to create an interpreter for that.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases.
+
+The next $n$ groups of lines consist of:
+\begin{itemize}
+    \item An integer $m$, the length of the upcoming UPWL script
+    \item A valid UWPL script with $m$ lines. Each line could be:
+    \begin{itemize}
+        \item An increment statement on one of $k$ variable names $v_i$, for $i \in \{1, \dots, k\}$.
+        \item Part of a "repeat $a$" statement. 
+        The scope of the repeat is denoted by an opening brace $\lbrace$ on the following line, and a closing brace $\rbrace$ on a later line.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^2 \qquad
+    1 \leq m \leq 10^4 \qquad
+    1 \leq a \leq 10^2 \qquad
+    1 \leq k \leq 10^2 \qquad
+    \forall i \in \{1, \dots, k\} \quad 1 \leq |v_i| \leq 5
+\end{equation*}
+
+The final value of any variable $v_i$ cannot exceed $10^6$. All inputs are valid UWPL scripts.
+
+\textbf{Output}
+
+$n$ pairs of lines. Each pair represents the end state of a UWPL script:
+\begin{enumerate}
+    \item A space-separated list of variable names $v_i$, for $i \in \lbrace 1, \dots, k \rbrace$.
+    \item A space-separated list of integers corresponding to the final value of each $v_i$.
+\end{enumerate}
+
+Note: Your output order of variable names does not matter.
+
+\vspace{8pt}
+\hrule
+
+\newpage
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\ \hline
+        \texttt{3\newline
+        \textbf{5}\newline
+        two++\newline
+        three++\newline
+        three++\newline
+        two++\newline
+        two++\newline
+        \textbf{8}\newline
+        a++\newline
+        repeat 5\newline
+        $\lbrace$\newline
+        b++\newline
+        c++\newline
+        b++\newline
+        $\rbrace$\newline
+        c++\newline
+        \textbf{17}\newline
+        cat++\newline
+        repeat 7\newline
+        $\lbrace$\newline
+        dog++\newline
+        repeat 10\newline
+        $\lbrace$\newline
+        cat++\newline
+        snake++\newline
+        $\rbrace$\newline
+        duck++\newline
+        repeat 11\newline
+        $\lbrace$\newline
+        snake++\newline
+        duck++\newline
+        $\rbrace$\newline
+        $\rbrace$\newline
+        duck++}
+        & 
+        \texttt{two three\newline
+        3 2\newline
+        a c b\newline
+        1 6 10\newline
+        cat dog snake duck\newline
+        71 7 147 85\newline
+        }\\ \hline
+    \end{tabular}
+\end{table}
+
+A few notes about these test cases:
+
+\begin{enumerate}
+    \item The variable \texttt{two} is incremented 3 times, and \texttt{three} is incremented 2 times.
+    \item This example shows off the basic usage and scope of the repeat block.
+    \item Repeat statements can be arbitrarily nested, so be careful with your scope!
+\end{enumerate}

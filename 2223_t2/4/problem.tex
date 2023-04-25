@@ -1,0 +1,156 @@
+\toggletrue{IsScore}
+\problem{4}{Third Principle}{Keegan R}
+{The road to hell is paved with good intentions}
+
+Remember our hit new programming language, UWPL? I bet you thought you were done with that.
+It turns out there was a third and final principle all along:
+\begin{enumerate}
+    \item[3.] \textit{"Control Space"} - 
+    Reject line non-minimality. Less lines, more UWPL.
+\end{enumerate}
+
+In other words, the UWPL compiler simply rejects any program with unneccessary lines.
+Or at least it will, when we get around to building it.
+In the meantime, ensure that your UWPL programs adhere to this standard as much as possible.
+Clean code. A clean mind.
+
+% diagram of long code, arrow, shorter code
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \node at (-4.5, 0) {
+            \begin{tabular}{l}
+                \Huge \texttt{cheese\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{\textcolor{uwcsred}{repeat} 3} \\
+                \Huge \texttt{\textcolor{uwcsred}{$\lbrace$}} \\
+                \Huge \texttt{tomato\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{cheese\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{tomato\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{\textcolor{uwcsred}{$\rbrace$}} \\
+                \Huge \texttt{cheese\textcolor{uwcsblue}{++}} \\
+            \end{tabular}
+        };
+        \node[single arrow, fill=uwcsblue, minimum width = 2cm, minimum height = 3.5cm] {\bfseries \Large \textcolor{white}{Minimal}};
+        \node at (4.5, 0) {
+            \begin{tabular}{l}
+                \Huge \texttt{\textcolor{uwcsred}{repeat} 5} \\
+                \Huge \texttt{\textcolor{uwcsred}{$\lbrace$}} \\
+                \Huge \texttt{tomato\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{cheese\textcolor{uwcsblue}{++}} \\
+                \Huge \texttt{\textcolor{uwcsred}{$\rbrace$}} \\
+                \Huge \texttt{tomato\textcolor{uwcsblue}{++}} \\
+            \end{tabular}
+        };
+    \end{tikzpicture}
+\end{figure}
+
+Given a specified end state of variables, construct a UWPL program achieving it. 
+\\ You will be scored on how well your program adheres to the third principle.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases.
+
+The next $n$ groups of lines consist of:
+\begin{itemize}
+    \item A line containing a single integer $k$, the number of non-zero variables.
+    \item A line of $k$ space-separated strings, $s_1, s_2, \dots, s_k$.
+    \item A line of $k$ space-separated integers, $v_1, v_2, \dots, v_k$.
+\end{itemize}
+
+The pair $(s_i, v_i)$ represents the name and final value of the $i$th variable.
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^2 \qquad
+    1 \leq k \leq 10^3 \qquad
+    \forall i \in \{1, \dots, k\} \quad 1 \leq |s_i| \leq 10, \quad 1 \leq v_i \leq 10^6
+\end{equation*}
+\textbf{Output}
+
+$n$ groups of lines, where:
+\begin{itemize}
+    \item The first line of each group is an integer $m$, the length of your UWPL script.
+    \item The next $m$ lines should be a UWPL script yielding the required end state.
+\end{itemize}
+
+\vspace{8pt}
+\hrule
+
+\textbf{Scoring}
+
+For each test case, if the output is invalid, get \textbf{-20} points. Otherwise, gain $4k - m$ points.
+
+\vspace{8pt}
+\hrule
+
+\newpage
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        \texttt{4\newline 
+        \textbf{2}\newline 
+        xx yy\newline 
+        3 3\newline 
+        \textbf{3}\newline 
+        xx yy zz\newline
+        35 90 55\newline
+        \textbf{1}\newline 
+        xx\newline
+        3\newline
+        \textbf{2}\newline
+        xx yy\newline
+        6 3}
+        & \texttt{\textbf{5}\newline 
+        repeat 3\newline
+        $\lbrace$\newline 
+        xx++\newline 
+        yy++\newline 
+        $\rbrace$\newline
+        \textbf{12}\newline 
+        repeat 35\newline
+        $\lbrace$\newline 
+        xx++\newline 
+        $\rbrace$\newline 
+        repeat 55\newline
+        $\lbrace$\newline 
+        zz++\newline 
+        $\rbrace$\newline 
+        repeat 90\newline
+        $\lbrace$\newline 
+        yy++\newline 
+        $\rbrace$\newline
+        \textbf{3}\newline 
+        xx++\newline
+        xx++\newline 
+        xx++\newline
+        \textbf{6}\newline 
+        repeat 3\newline 
+        $\lbrace$\newline 
+        xx++\newline 
+        xx++\newline
+        yy++\newline
+        $\rbrace$\newline} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+A few notes about these test cases:
+
+\begin{enumerate}
+    \item Variables with the same value may be worth merging into the same repeat.
+    \item Sometimes, the best way is to handle them separately.
+    \item Repeats take up a lot of space, so might not be necessary.
+    \item It may be more compact to use the same variable twice within a repeat.
+\end{enumerate}
+
+The total score for this submission would be \textbf{+6}.

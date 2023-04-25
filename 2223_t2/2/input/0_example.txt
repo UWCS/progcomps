@@ -1,0 +1,34 @@
+3
+5
+two++
+three++
+three++
+two++
+two++
+8
+a++
+repeat 5
+{
+b++
+c++
+b++
+}
+c++
+17
+cat++
+repeat 7
+{
+dog++
+repeat 10
+{
+cat++
+snake++
+}
+duck++
+repeat 11
+{
+snake++
+duck++
+}
+}
+duck++

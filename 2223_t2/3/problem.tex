@@ -1,0 +1,148 @@
+\togglefalse{IsScore}
+\problem{3}{Doomed Gambit}{Keegan R}
+{No beans or cows in sight, I promise}
+
+Chess has turned into anarchy. 
+The other pieces are extinct; only queens remain.
+Colours are meaningless. After all, it's every queen for themselves.
+An aerial view of the infinite chessboard they battle on reveals all - including which queens are doomed to perish.
+
+Queens can be moved (in a straight line) horizontally, vertically, or diagonally, through any number of unoccupied spaces.
+A queen can capture another by moving to the square the opposing piece stands on, displacing it. Queens can not move through other pieces.
+
+% Picture showing non-doomed and doomed queens
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        % Grid 1
+        \draw[step=1cm, black, thin] (-0.25, -0.25) grid (5.25, 5.25);
+        
+        \draw[uwcsblue, ultra thick] (-0.25, 2.5) -- (4.5, 2.5);
+        \draw[uwcsblue, ultra thick] (2.5, -0.25) -- (2.5, 5.25);
+        \draw[uwcsblue, ultra thick] (1.5, 1.5) -- (5.25, 5.25);
+        \draw[uwcsblue, ultra thick] (-0.25, 5.25) -- (5.25, -0.25);
+        
+        \filldraw[uwcsblue] (2.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (1.5, 1.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (4.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+
+        % Grid 2
+        \begin{scope}[shift={(7, 0)}]
+
+        \draw[step=1cm, black, thin] (-0.25, -0.25) grid (5.25, 5.25);
+
+        \draw[uwcsred, ultra thick] (1.5, 2.5) -- (5.25, 2.5);
+        \draw[uwcsred, ultra thick] (2.5, 1.5) -- (2.5, 4.5);
+        \draw[uwcsred, ultra thick] (0.5, 0.5) -- (3.5, 3.5);
+        \draw[uwcsred, ultra thick] (-0.25, 5.25) -- (4.5, 0.5);
+
+        \filldraw[uwcsred] (2.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (0.5, 0.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (1.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (2.5, 1.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (2.5, 4.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (3.5, 3.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[gray] (4.5, 0.5) circle (0.4cm) node[text=white] {\Large Q};
+        \end{scope}
+
+    \end{tikzpicture}
+\end{figure}
+
+We call a queen \textit{doomed} if, no matter the move chosen from its current position, it could be captured by another piece after moving.
+Given a board, which queens are doomed?
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases.
+
+Each of the $n$ test cases consists of 3 lines:
+\begin{itemize}
+    \item The first line is an integer $q$, the number of queens on the grid
+    \item The second line contains $q$ space-separated integers $x_1, x_2, \dots, x_q$
+    \item The third line contains $q$ space-separated integers $y_1, y_2, \dots, y_q$
+\end{itemize}
+
+Note that each $(x_i, y_i)$ represents the position of a queen on an infinite chessboard.
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^2 \qquad
+    1 \leq q \leq 3 \cdot 10^4 \qquad
+    \forall i \in \{1, \dots, q\} \quad 1 \leq x_i, y_i \leq 10^5
+\end{equation*}
+\textbf{Output}
+
+For each of the $n$ test cases, output 2 lines of $d$ space-separated integers:
+\begin{enumerate}
+    \item The first line represents the $x$-coordinates $x_1, x_2, \dots, x_d$
+    \item The second line represents the $y$-coordinates $y_1, y_2, \dots, y_d$
+\end{enumerate}
+
+Each $(x_i, y_i)$ in your output should represent the position of each doomed queen.
+
+\vspace{8pt}
+\hrule
+
+\newpage
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.5\linewidth}|p{0.3\linewidth}|}
+        \hline
+        Input & Output \\ \hline
+        \texttt{3\newline 
+        \textbf{3}\newline
+        2 3 5\newline
+        2 3 3\newline
+        \textbf{7}\newline
+        1 2 3 3 3 4 5\newline
+        1 3 2 3 5 4 1\newline 
+        \textbf{10}\newline
+        1 1 2 2 2 3 4 4 5 5\newline
+        2 4 1 3 5 3 1 5 2 4\newline}
+        &
+        \texttt{\text{}\newline
+        \text{}\newline
+        3\newline
+        3\newline
+        1 1 2 2 4 4 5 5\newline
+        2 4 1 5 1 5 2 4\newline}
+        \\ \hline
+    \end{tabular}
+\end{table}
+
+Test cases 1 and 2 are depicted in the question's introduction. Some notes:
+
+\begin{enumerate}
+    \item None of the queens are doomed, so two blank lines are output after the 0.
+    \item There's a doomed queen at $(3, 3)$.
+    No matter where it moves, it can still be taken.
+    \item All but two queens are doomed. 
+    Note that $(2, 3)$ can safely capture $(3, 3)$, see below:
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw[step=1cm, black, thin] (-0.25, -0.25) grid (5.25, 5.25);
+        
+        \filldraw[uwcsred] (0.5, 1.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsred] (0.5, 3.5) circle (0.4cm) node[text=white] {\Large Q};
+        
+        \filldraw[uwcsred] (1.5, 0.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsblue] (1.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsred] (1.5, 4.5) circle (0.4cm) node[text=white] {\Large Q};
+        
+        \filldraw[uwcsblue] (2.5, 2.5) circle (0.4cm) node[text=white] {\Large Q};
+
+        \filldraw[uwcsred] (3.5, 0.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsred] (3.5, 4.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsred] (4.5, 1.5) circle (0.4cm) node[text=white] {\Large Q};
+        \filldraw[uwcsred] (4.5, 3.5) circle (0.4cm) node[text=white] {\Large Q};
+
+    \end{tikzpicture}
+\end{figure}

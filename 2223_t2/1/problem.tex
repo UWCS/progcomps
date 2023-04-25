@@ -1,0 +1,69 @@
+\togglefalse{IsScore}
+\problem{1}{Find Milk}{Keegan R}
+{How long does it take for a joke to die?}
+
+The exec were busy preparing for Milk Mondays, the greatest event known to mankind.
+But, oh no!
+The milk (all four characters of it) got spilt into a pool of letters.
+
+\begin{center}
+    \Huge \bfseries \textcolor{uwcsblue}{M}AKESAWH\textcolor{uwcsblue}{I}TE\textcolor{uwcsblue}{L}A\textcolor{uwcsblue}{K}E
+\end{center}
+
+Don't cry over spilt milk.
+Instead, let's bring it back together: find the shortest substring that contains all of the letters "M", "I", "L", and "K".
+Quick, before it goes off!
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases.
+
+The next $n$ lines each consist of a single string of uppercase letters, $s$.
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq n \leq 10^3 \qquad
+    4 \leq |s| \leq 10^4
+\end{equation*}
+
+At least one "M", "I", "L", and "K" will be present in $s$.
+
+\textbf{Output}
+
+$n$ lines, each consisting of two space-separated integers: 
+both the start and end indices (zero-indexed) of the smallest substring in $s$ containing the characters "M", "I", "L", "K".
+
+\vspace{8pt}
+\hrule
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+        \hline
+        Input & Output \\
+        \hline
+        \texttt{3\newline
+        HIJKLMN\newline
+        KLAAAMIIKAL\newline
+        MILKMLIKMIKLIMLK\newline}
+        & 
+        \texttt{1 5\newline 
+        5 10\newline
+        3 6\newline}
+        \\
+        \hline
+    \end{tabular}
+\end{table}
+
+A few notes about these test cases:
+
+\begin{enumerate}
+    \item Only the first and last character are excluded. Remember: order doesn't matter.
+    \item Although "KLAAAMI" contains MILK, "MIIKAL" is shorter.
+    \item Sometimes, there may be multiple valid answers.
+\end{enumerate}

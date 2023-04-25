@@ -1,0 +1,30 @@
+5
+repeat 3
+{
+xx++
+yy++
+}
+12
+repeat 35
+{
+xx++
+}
+repeat 55
+{
+zz++
+}
+repeat 90
+{
+yy++
+}
+3
+xx++
+xx++
+xx++
+6
+repeat 3
+{
+xx++
+xx++
+yy++
+}

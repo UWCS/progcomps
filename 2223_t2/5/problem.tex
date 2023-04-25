@@ -1,0 +1,151 @@
+\toggletrue{IsScore}
+\problem{5}{Tic-Tac-No}{Keegan R}
+{My final problem.}
+
+Tic-tac-toe is a relatively simple game. To win, you need to form a line/chain of 3 squares (horizontally, vertically, or diagonally) on a $3 \times 3$ grid.
+This problem is less concerned with the game, and more with those chains.
+How many grid squares would we need to block to prevent any 3-chain from being formed?
+The answer is 3: top left, middle, bottom right.
+
+Given an $n \times n$ grid, block a subset of grid squares to prevent any $k$-chain from being formed. 
+Use less squares, gain more points.
+We discussed the case where $n=3, k=3$.
+
+% Picture showing non-doomed and doomed queens
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        % Grid 1
+        \begin{scope}[shift={(0, 2.5)}]
+            \draw[step=1cm, black, thin] (0, 0) grid (3, 3);
+            
+            \filldraw[uwcsred] (0, 0) rectangle ++(1, 1);
+            \filldraw[uwcsred] (1, 1) rectangle ++(1, 1);
+            \filldraw[uwcsred] (2, 2) rectangle ++(1, 1);
+
+            \node at (1.5, -0.5) {\Large $n=3, k=3$};
+        \end{scope}
+
+        % Grid 2
+        \begin{scope}[shift={(4, 1)}]
+
+            \draw[step=1cm, black, thin] (0, 0) grid (6, 6);
+        
+            \filldraw[uwcsred] (2, 0) rectangle ++(2, 1);
+            \filldraw[uwcsred] (2, 5) rectangle ++(2, 1);
+            \filldraw[uwcsred] (0, 2) rectangle ++(1, 2);
+            \filldraw[uwcsred] (5, 2) rectangle ++(1, 2);
+            
+            \filldraw[uwcsred] (1, 1) rectangle ++(1, 1);
+            \filldraw[uwcsred] (4, 1) rectangle ++(1, 1);
+            \filldraw[uwcsred] (1, 4) rectangle ++(1, 1);
+            \filldraw[uwcsred] (4, 4) rectangle ++(1, 1);
+
+            \filldraw[uwcsred] (2, 2) rectangle ++(2, 2);
+    
+            \node at (3, -0.5) {\Large $n=6, k=3$};
+        \end{scope}
+
+        % Grid 3
+        \begin{scope}[shift={(11, 0)}]
+
+            \draw[step=1cm, black, thin] (0, 0) grid (8, 8);
+        
+            \filldraw[uwcsred] (0, 0) rectangle ++(1, 1);
+            \filldraw[uwcsred] (3, 0) rectangle ++(1, 1);
+            \filldraw[uwcsred] (4, 0) rectangle ++(1, 1);
+            \filldraw[uwcsred] (2, 1) rectangle ++(1, 1);
+            \filldraw[uwcsred] (6, 1) rectangle ++(1, 1);
+
+            \filldraw[uwcsred] (3, 2) rectangle ++(1, 3);
+            \filldraw[uwcsred] (7, 2) rectangle ++(1, 1);
+
+            \filldraw[uwcsred] (1, 3) rectangle ++(1, 1);
+            \filldraw[uwcsred] (5, 3) rectangle ++(1, 1);
+
+            \filldraw[uwcsred] (0, 4) rectangle ++(1, 1);
+            \filldraw[uwcsred] (4, 4) rectangle ++(1, 1);
+            \filldraw[uwcsred] (7, 4) rectangle ++(1, 1);
+
+            \filldraw[uwcsred] (2, 5) rectangle ++(1, 1);
+            \filldraw[uwcsred] (6, 5) rectangle ++(1, 1);
+            \filldraw[uwcsred] (3, 6) rectangle ++(2, 1);
+
+            \filldraw[uwcsred] (1, 7) rectangle ++(1, 1);
+            \filldraw[uwcsred] (5, 7) rectangle ++(1, 1);
+
+            \node at (4, -0.5) {\Large $n=8, k=4$};
+        \end{scope}
+
+    \end{tikzpicture}
+\end{figure}
+Some values of $n$ and $k$ are easier to work with than others.
+Remember: block $k$-in-a-row.
+
+\vspace{8pt}
+\hrule
+
+\textbf{Input}
+
+The first line of the input contains an integer $n$, denoting the number of test cases.
+
+Each of the $t$ test cases consists of two space-separated integers:
+\begin{itemize}
+    \item $n$ is the side length of the grid.
+    \item $k$ is the block length. No unblocked chain of this size or higher may be formed.
+\end{itemize}
+
+\textbf{Constraints}
+\begin{equation*}
+    1 \leq t \leq 100 \qquad
+    1 \leq k \leq n \leq 10^3
+\end{equation*}
+
+\textbf{Output}
+
+For each of the $t$ test cases, output 2 lines representing $b$ coordinates:
+\begin{enumerate}
+    \item A space-separated list of $x$-coordinates $x_1, x_2, \dots, x_b$, with $1 \leq x_i \leq n$
+    \item A space-separated list of $y$-coordinates $y_1, y_2, \dots, y_b$, with $1 \leq y_i \leq n$
+\end{enumerate}
+
+\vspace{8pt}
+\hrule
+
+\textbf{Scoring}
+
+For each test case, if the output is invalid, get \textbf{-20} points. Otherwise, you gain:
+\begin{equation*}
+    2n \left\lfloor \frac{n}{k} \right\rfloor - \left\lfloor \frac{n}{k} \right\rfloor^2 - b
+\end{equation*}
+
+\vspace{8pt}
+\hrule
+
+\newpage
+
+\textbf{Example}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{0.2\linewidth}|p{0.6\linewidth}|}
+        \hline
+        Input & Output \\ \hline
+        \texttt{3\newline 
+        3 3\newline
+        6 3\newline
+        8 4\newline}
+        &
+        \texttt{1 2 3\newline
+        1 2 3\newline
+        1 1 2 2 3 3 3 3 4 4 4 4 5 5 6 6\newline
+        3 4 2 5 1 3 4 6 1 3 4 6 2 5 3 4\newline
+        1 1 2 2 3 3 4 4 4 4 4 5 5 5 6 6 7 7 8 8\newline
+        1 5 4 8 2 6 1 3 4 5 7 1 5 7 4 8 2 6 3 5\newline}
+        \\ \hline
+    \end{tabular}
+\end{table}
+
+The visualised version of these test cases is above.
+
+Best of luck!

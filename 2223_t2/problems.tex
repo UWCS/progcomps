@@ -1,0 +1,66 @@
+\documentclass[a4paper,11pt,parskip=half-]{scrartcl} 
+% scrartcl for Montserrat
+
+\input{../common/common.tex}
+
+\begin{document}
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+    \vspace{-10pt} % Move in line with text
+    \includegraphics[width=0.9\linewidth]{shield.png}
+    \vspace{-100pt} % Prevent text below from moving out of the way
+\end{wrapfigure}
+
+{
+    \Huge \bfseries UWCS Challenge
+}
+
+{
+    \Large A friendlier programming competition
+}
+
+\section*{Introduction}
+
+Welcome to our internal progcomp!
+There will be problems. There will be prizes! And of course, there will be pizza.
+This document contains specifications for the 5 problems.
+
+For each problem, you will need to process your solution on various input datasets, then submit the outputs (and your code) for scoring.
+This is all handled by our website:
+\begin{center}
+    \huge \href{https://challenge.uwcs.co.uk}{challenge.uwcs.co.uk}
+\end{center}
+
+There are 100 (+25) points available for each problem. 
+The base 100 points are divided across each input file. 
+For example - if there are 5 input files, each is worth up to 20 points. 
+Each input file has multiple test cases, so you can get partial marks.
+Fully complete a problem and get a bonus 25 points - a nice incentive for finishing it off!
+
+Later problems may be score-based, so won't have a designated solution.
+For these, points are awarded by ranking teams on their score for each input dataset, and scaling that from 0 to 100.
+To be ranked, your score must be non-negative.
+
+The first 3 problems will be released simultaneously.
+The rest will be staggered. \\ 
+Good luck, and have fun!
+
+\vspace{16pt}
+\hrule
+\vspace{16pt}
+
+\input{../common/sample_problem/problem.tex}
+
+\newpage
+
+\input{1/problem.tex}
+\newpage
+\input{2/problem.tex}
+\newpage
+\input{3/problem.tex}
+\newpage
+\input{4/problem.tex}
+\newpage
+\input{5/problem.tex}
+
+\end{document}
