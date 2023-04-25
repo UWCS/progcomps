@@ -1,0 +1,78 @@
+\usepackage[a4paper,margin=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage[english]{babel}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{graphicx}
+
+\usepackage[defaultfam,tabular]{montserrat}
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
+
+\usepackage{wrapfig}  % for top-right logo
+
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Custom colours
+\definecolor{uwcsblue}{RGB}{58,125,255}
+\definecolor{uwcsred}{RGB}{238,79,79}
+\definecolor{uwcsyellow}{RGB}{255,199,0}
+
+% For correct/incorrect
+\newcommand*\circled[1]{
+    \tikz[baseline=(char.base)]{
+    \node[shape=circle,inner sep=2pt,fill=uwcsblue] 
+    (char) {\textcolor{white}{\textbf{#1}}};
+    }
+}
+
+% For score-based
+\newcommand*\squared[1]{
+    \tikz[baseline=(char.base)]{
+    \node[shape=rectangle,inner sep=4pt,fill=uwcsred] 
+    (char) {\textcolor{white}{\textbf{#1}}};}
+}
+
+\usepackage{etoolbox} % for conditional execution
+\newtoggle{IsScore}
+
+\newcommand*\problem[4]{
+    \addcontentsline{toc}{subsection}{#1}
+    {\LARGE 
+    \iftoggle{IsScore}
+    {
+        \squared{#1}
+    }
+    {
+        \circled{#1}
+    } 
+    \textbf{#2}
+    } 
+    \hfill
+    {\footnotesize Created by: \itshape #3}
+
+    {\itshape #4}
+}
+
+\usetikzlibrary{shapes.arrows}
+
+\graphicspath{{../common/}}
+\pagestyle{empty}
+\setkomafont{section}{\usefont{T1}{fvs}{b}{n}\Large}
+
+\renewcommand{\arraystretch}{1.5}
+
+% Custom logo footer
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[EOCF]{\includegraphics[scale=0.05]{logo_wide.png}}
+\fancyfoot[R]{\thepage}
